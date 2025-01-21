@@ -201,6 +201,7 @@ func (w *Webhook) GetWebhookData(ctx context.Context, provider *Spec, ref *esv1b
 	// add explicit credentials for specified auth protocols
 	// any Auth headers set here will overwrite manually set Auth in provider.Headers
 	if provider.Auth != nil {
+		//nolint:gocritic // singleCaseSwitch: we prefer to keep it as a switch for clarity
 		switch {
 		case provider.Auth.NTLM != nil:
 
@@ -270,6 +271,7 @@ func (w *Webhook) GetHTTPClient(ctx context.Context, provider *Spec) (*http.Clie
 	}
 	// add authentication method if it s there
 	if provider.Auth != nil {
+		//nolint:gocritic // singleCaseSwitch: we prefer to keep it as a switch for clarity
 		switch {
 		case provider.Auth.NTLM != nil:
 

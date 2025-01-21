@@ -68,9 +68,8 @@ func TestWebhookAuth(t *testing.T) {
 	// execute test cases
 	for _, p := range testAuthHeaders {
 		server := p.MockServer(p.Creds, t)
-		defer server.Close()
-
 		result := p.Request(server.URL, creds, t)
+		server.Close()
 		expect := p.Expect
 		if result != expect {
 			t.Errorf("Test failed. Result: '%s' / Expected:  '%s'", result, expect)
